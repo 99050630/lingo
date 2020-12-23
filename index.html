@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='nl'>
+    <head>
+        <link rel="stylesheet" href="style/style.css">
+        <script src="script/lingo-nl.js"></script>
+        <title>Lingo</title>
+    </head>
+    <body>
+        <div class="lingo">
+            <div class="lingo_sub">
+                <img src="images/logo.png" alt="">
+                <hr>
+                <input type="text" name="woord" id="woord" maxlength="5" autocomplete="off" placeholder="5 Letter woord">
+                <button onclick="checkWord(document.getElementById('woord').value);">SPEL HET!</button>
+                <div class="lingo_bord">
+                    <div id="bord" class="lingo_bord_sub">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script/script.js"></script>
+    </body>
+</html>

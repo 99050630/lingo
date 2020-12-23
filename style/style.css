@@ -1,0 +1,73 @@
+html, body{
+    padding: 0;
+    margin: 0;
+}
+div.lingo{
+    position: relative;
+    float: left;
+    width: 100%;
+    padding: 50px 0;
+}
+    div.lingo_sub{
+        margin: auto;
+        max-width: 600px;
+        background-color: #1167B1;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+        div.lingo_sub img{
+            width: 300px;
+        }
+        div.lingo_sub hr{
+            border-color: #187BCD;
+        }
+        div.lingo_sub input{
+            padding: 7px 12px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            margin-top: 5px;
+            background-color: #187BCD;
+            color: #FFF;
+            font-family: Arial, Helvetica, sans-serif;
+            outline: none;
+        }
+        div.lingo_sub button{
+            padding: 7px 12px;
+            border: none;
+            cursor: pointer;
+            margin-top: 5px;
+            background-color: #2A9DF4;
+            color: #FFF;
+            font-family: Arial, Helvetica, sans-serif;
+            outline: none;
+        }
+            div.lingo_sub input::placeholder{
+                color: rgba(255, 255, 255, 0.493);
+                font-family: Arial, Helvetica, sans-serif;
+                font-style: italic;
+            }
+        div.lingo_bord{
+            width: 100%;
+            margin-top: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #187BCD;
+        }
+            div.lingo_row{
+                width: 100%;
+                display: grid;
+                grid-template-columns: auto auto auto auto auto;
+                column-gap: 10px;
+                margin-top: 10px;
+                box-sizing: border-box;
+            }
+                div.lingo_letter{
+                    width: 100%;
+                    height: 98px;
+                    padding: 35px 0;
+                    box-sizing: border-box;
+                    border: 1px solid #fff;
+                    color: #FFF;
+                    font-size: 20px;
+                }
