@@ -4,6 +4,7 @@ var randomWord;
 var maxAttempts;
 var counterGoed;
 var juistePlek = [];
+var checkWordArr = [];
 var poging = 0;
 
 function loadWord(){
@@ -46,20 +47,29 @@ function plaatsen(woord){
             counterGoed++;
             juistePlek[i] = lettersWoord[i];
             document.getElementById("letter_"+ (poging+1) + "_" + i).innerHTML = juistePlek[i];
+            //Verwijderd eerste element uit array
+            delete checkWordArr[i];
         } else{
             //kijken of letter in woord zit en hem geel maken
-            if(randomWord.includes(lettersUser[i])){
+            if(checkWordArr.includes(lettersUser[i])){
+                console.log(checkWordArr.includes(lettersUser[i]));
+                //Verwijderd eerste element uit array
                 document.getElementById("letter_"+poging+"_"+i).style.borderRadius = "50%";
                 document.getElementById("letter_"+poging+"_"+i).style.backgroundColor = "#d1d100";
+                delete checkWordArr[i];
             }
         }
-        if(counterGoed == lettersWoord.length){
-            alert("GEWONNNEN WOELEH");
-        }
+        // if(counterGoed == lettersWoord.length){
+        //     alert("GEWONNNEN WOELEH");
+        // }
     }
 }
 
 function checkWord(woord){
+    for(var i = 0; i < randomWord.length; i++){
+        checkWordArr[i] = randomWord[i];
+        console.log(checkWordArr[i]);
+    }
     if(poging < maxAttempts - 1){
         //zet de counter van de goede letters op 0;
         counterGoed = 0;
