@@ -3,8 +3,6 @@ var bord = document.getElementById("bord");
 var randomWord;
 var maxAttempts;
 var counterGoed;
-var juistePlek = [];
-var checkWordArr = [];
 var poging = 0;
 
 function loadWord(){
@@ -39,37 +37,44 @@ function plaatsen(woord){
     }
     console.log(lettersWoord);
     //hier checkt en plaats je de letters
-    for(var i = 0; i < lettersUser.length; i++){
-        console.log(i);
+    for(var i = 0; i < lettersUser.length; i++){   
+        //Zet letter in vakje
         document.getElementById("letter_"+poging+"_"+i).innerText = lettersUser[i];
+
+        //Kijken of letter gelijk is
         if(lettersWoord[i] == lettersUser[i]){
             document.getElementById("letter_"+poging+"_"+i).style.backgroundColor = "green";
-            counterGoed++;
-            juistePlek[i] = lettersWoord[i];
-            document.getElementById("letter_"+ (poging+1) + "_" + i).innerHTML = juistePlek[i];
-            //Verwijderd eerste element uit array
-            delete checkWordArr[i];
+            document.getElementById("letter_"+ (poging+1) + "_" + i).innerHTML = lettersUser[i];
+            
+            console.log(lettersWoord[i])
+
+            lettersWoord[i] = '';
         } else{
             //kijken of letter in woord zit en hem geel maken
-            if(checkWordArr.includes(lettersUser[i])){
-                console.log(checkWordArr.includes(lettersUser[i]));
-                //Verwijderd eerste element uit array
-                document.getElementById("letter_"+poging+"_"+i).style.borderRadius = "50%";
-                document.getElementById("letter_"+poging+"_"+i).style.backgroundColor = "#d1d100";
-                delete checkWordArr[i];
+            // if(lettersWoord.includes(lettersUser[i])){
+            //     document.getElementById("letter_"+poging+"_"+i).style.borderRadius = "50%";
+            //     document.getElementById("letter_"+poging+"_"+i).style.backgroundColor = "#d1d100";
+
+            //     //Verwijderd element uit array
+            //     lettersWoord[i] = "";
+            // }
+            for(var x = 0; x < lettersWoord.length; x++){
+                //check of letter in array zit
+                if(lettersUser[i] == lettersWoord[x]){
+                    console.log(lettersUser[i] + 'zit in array');
+                    document.getElementById("letter_"+poging+"_"+i).style.borderRadius = "50%";
+                    document.getElementById("letter_"+poging+"_"+i).style.backgroundColor = "#d1d100";
+                    lettersWoord[i] = '';
+                }else{
+                    console.log(lettersUser[i] + "zit niet in arrray");
+                }
             }
         }
-        // if(counterGoed == lettersWoord.length){
-        //     alert("GEWONNNEN WOELEH");
-        // }
     }
 }
 
 function checkWord(woord){
-    for(var i = 0; i < randomWord.length; i++){
-        checkWordArr[i] = randomWord[i];
-        console.log(checkWordArr[i]);
-    }
+    
     if(poging < maxAttempts - 1){
         //zet de counter van de goede letters op 0;
         counterGoed = 0;
@@ -84,7 +89,6 @@ function checkWord(woord){
         
     }
 }
-
 
 loadWord();
 loadBord(5, 5);
